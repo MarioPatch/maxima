@@ -1,0 +1,97 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+registerNbrPlayers():=block(
+    kill(nbrPlayers),
+    nbrPlayers:read(nbrPlayers)
+);
+registerPlayers():=block(
+    cpt:1,
+    players:[],
+    print("Entrer le nom des joueurs (puis taper [enter])"),
+    while(cpt <= nbrPlayers)do
+    (
+        kill(new),
+        new:read(new),
+        players:endcons(new,players),
+        scores:endcons(0,scores),
+        cpt:cpt+1
+    ),
+    kill(cpt)
+);
+showNbrPlayer():=block(
+    print("Il y a ",nbrPlayers," joueurs")
+);
+showPlayer():=block(
+    print("les joueurs rentrés sont:"),
+    sprint(">"),
+    for i:1 thru length(players) do(
+        sprint(players[i])
+    ),
+    print(""),
+    kill(i)
+);
+showScores():=block(
+    print("*************"),
+    print("* ! SCORE ! *"),
+    print("*************"),
+    for i:1 thru length(players) do(
+        print(players[i]," ",scores[i])
+    ),
+    print(""),
+    kill(i)
+);
+registerScore(idPlayer):=block(
+    print("Entrer le score pour ",players[idPlayer]," :"),
+    print("(Taper [-1] quand vous avez fini)"),
+    score:0,
+    cpt:0,
+    while(cpt#-1) do
+    (
+        kill(cpt),
+        cpt:read(cpt),
+        if(cpt#-1)then
+        (
+            score:score+cpt
+        ) 
+    ),
+    scores[idPlayer]:score,
+    kill(cpt,score)
+);
+registerScores():=block(
+    idPlayer:0,
+    while(idPlayer#-1)do
+    (
+        kill(i,idPlayer),
+        print("Selectionner le numéro du joueur :"),
+        print("(Taper [-1] quand vous avez fini)"),
+        for i:1 thru length(players) do(
+            print("[",i,"]- ",players[i])
+        ),
+        idPlayer:read(idPlayer),
+        if(idPlayer#-1)then
+        (
+            registerScore(idPlayer),
+            showScores()
+        )
+    ),
+    kill(i,idPlayer)
+);
+uno():=block(
+    scores:[],
+    registerNbrPlayers(),
+    showNbrPlayer(),
+    registerPlayers(),
+    showPlayer(),
+    registerScores(),
+    showScores()
+);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+uno();
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

@@ -1,0 +1,46 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+is_major(age):=
+    if(age<=18) then
+        read("je suis mineur")
+    else
+        read("je suis majeur");
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+is_major(11);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lp:[1,2,3,5];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lp;
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+lp[2];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+player:["thomas","xavier"];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+length(player);
+rest(player);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+i:0;
+while i<10 do(
+    read(i),
+    i:i+1
+);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
